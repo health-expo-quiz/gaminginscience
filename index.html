@@ -4,70 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Containment Game</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        #virus-container {
-            border: 1px solid black;
-            padding: 20px;
-            margin: 20px auto;
-            width: 300px;
-        }
-        #stats {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Containment Game</h1>
-    <p>Your mission: Contain the virus before it spreads!</p>
+    <header>
+        <h1>Containment Game</h1>
+        <p>Your mission: Contain the virus before it spreads!</p>
+    </header>
 
-    <div id="virus-container">
-        <h2>Virus Stats</h2>
-        <p>Infection Rate: <span id="infection-rate">0%</span></p>
-        <p>Mortality Rate: <span id="mortality-rate">0%</span></p>
-        <p>Containment Level: <span id="containment-level">0%</span></p>
-    </div>
+    <main>
+        <div id="virus-container">
+            <img id="virus-image" src="normal_virus.png" alt="Virus Image">
+            <h2>Virus Stats</h2>
+            <ul>
+                <li>Infection Rate: <span id="infection-rate">0%</span></li>
+                <li>Mortality Rate: <span id="mortality-rate">0%</span></li>
+                <li>Containment Level: <span id="containment-level">0%</span></li>
+            </ul>
+        </div>
 
-    <div id="actions">
-        <button onclick="increaseContainment()">Increase Containment</button>
-        <button onclick="decreaseInfectionRate()">Decrease Infection Rate</button>
-        <button onclick="decreaseMortalityRate()">Decrease Mortality Rate</button>
-    </div>
+        <div id="actions">
+            <button class="action-button" onclick="increaseContainment()">Increase Containment</button>
+            <button class="action-button" onclick="decreaseInfectionRate()">Decrease Infection Rate</button>
+            <button class="action-button" onclick="decreaseMortalityRate()">Decrease Mortality Rate</button>
+        </div>
 
-    <script>
-        let infectionRate = 0;
-        let mortalityRate = 0;
-        let containmentLevel = 0;
+        <div id="game-over-message"></div>
+    </main>
 
-        function updateStats() {
-            document.getElementById("infection-rate").textContent = infectionRate + "%";
-            document.getElementById("mortality-rate").textContent = mortalityRate + "%";
-            document.getElementById("containment-level").textContent = containmentLevel + "%";
-        }
-
-        function increaseContainment() {
-            containmentLevel += 5;
-            updateStats();
-            // Add game logic here, e.g., check for game over conditions
-        }
-
-        function decreaseInfectionRate() {
-            infectionRate -= 5;
-            updateStats();
-            // Add game logic here
-        }
-
-        function decreaseMortalityRate() {
-            mortalityRate -= 5;
-            updateStats();
-            // Add game logic here
-        }
-
-        // Initial game setup
-        updateStats();
-    </script>
+    <script src="game.js"></script>
 </body>
 </html>
