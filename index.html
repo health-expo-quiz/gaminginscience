@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containment Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #virus-container {
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px auto;
+            width: 300px;
+        }
+        #stats {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Containment Game</h1>
+    <p>Your mission: Contain the virus before it spreads!</p>
+
+    <div id="virus-container">
+        <h2>Virus Stats</h2>
+        <p>Infection Rate: <span id="infection-rate">0%</span></p>
+        <p>Mortality Rate: <span id="mortality-rate">0%</span></p>
+        <p>Containment Level: <span id="containment-level">0%</span></p>
+    </div>
+
+    <div id="actions">
+        <button onclick="increaseContainment()">Increase Containment</button>
+        <button onclick="decreaseInfectionRate()">Decrease Infection Rate</button>
+        <button onclick="decreaseMortalityRate()">Decrease Mortality Rate</button>
+    </div>
+
+    <script>
+        let infectionRate = 0;
+        let mortalityRate = 0;
+        let containmentLevel = 0;
+
+        function updateStats() {
+            document.getElementById("infection-rate").textContent = infectionRate + "%";
+            document.getElementById("mortality-rate").textContent = mortalityRate + "%";
+            document.getElementById("containment-level").textContent = containmentLevel + "%";
+        }
+
+        function increaseContainment() {
+            containmentLevel += 5;
+            updateStats();
+            // Add game logic here, e.g., check for game over conditions
+        }
+
+        function decreaseInfectionRate() {
+            infectionRate -= 5;
+            updateStats();
+            // Add game logic here
+        }
+
+        function decreaseMortalityRate() {
+            mortalityRate -= 5;
+            updateStats();
+            // Add game logic here
+        }
+
+        // Initial game setup
+        updateStats();
+    </script>
+</body>
+</html>
